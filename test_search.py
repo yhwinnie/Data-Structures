@@ -19,6 +19,8 @@ class TestSearch(unittest.TestCase):
 
     def test_linear_search_with_items_not_in_list(self):
         # linear search can find items regardless of list order
+        names = []
+        assert linear_search(names, 'Jeremy') is None
         names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
         # linear search should return None for any item not in the list
         assert linear_search(names, 'Jeremy') is None

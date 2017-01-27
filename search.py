@@ -41,16 +41,15 @@ def binary_search_iterative(array, item):
     # O(log n)
     left = 0
     right = len(array) - 1
-    mid = left + (right - left) / 2
 
     while right >= left:
+        mid = (right - left) / 2
         if array[mid] == item:
             return mid
         elif array[mid] > item:
             right = mid - 1
         else:
             left = mid + 1
-        mid = left + (right - left) / 2
 
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests below
@@ -58,17 +57,17 @@ def binary_search_iterative(array, item):
 
 def binary_search_recursive(array, item, left=None, right=None):
     # O(log n)
-    if array == []:
-        return None
-        
+    # if array == []:
+    #     return None
     if left == None or right == None:
         return binary_search_recursive(array, item, left=0, right=len(array) - 1)
 
-    mid = left + (right - left) / 2
-
     if right < left:
         return None
-    elif array[mid] == item:
+
+    mid = (right + left) / 2
+
+    if array[mid] == item:
         return mid
     elif array[mid] > item:
         return binary_search_recursive(array, item, left, mid - 1)

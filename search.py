@@ -38,7 +38,8 @@ def binary_search(array, item):
 
 
 def binary_search_iterative(array, item):
-    # TODO: implement binary search iteratively here
+    # implement binary search iteratively here
+    # O(log n)
     left = 0
     right = len(array) - 1
     mid = left + (right - left) / 2
@@ -60,6 +61,7 @@ def binary_search_iterative(array, item):
 
 
 def binary_search_recursive(array, item, left=None, right=None):
+    # O(log n)
     if not array:
         return None
 

@@ -52,7 +52,6 @@ def encode(num, base):
             encoded_str = str(remainder) + encoded_str
     return encoded_str
 
-
 def convert(str_num, base1, base2):
     """
     Convert given number from base1 to base2.
@@ -64,8 +63,6 @@ def convert(str_num, base1, base2):
     converted_num = encode(converted_num, base2)
 
     return converted_num
-
-
 
 def main():
     import sys

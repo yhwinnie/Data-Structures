@@ -13,7 +13,7 @@ def factorial(n):
 
 
 def factorial_iterative(n):
-    # TODO: implement the factorial function iteratively here
+    # implement the factorial function iteratively here
     rtn = 1
     if n < 0:
         raise ValueError
@@ -24,7 +24,6 @@ def factorial_iterative(n):
     while n > 0:
         rtn = n * rtn
         n = n - 1
-        
     return rtn
     #pass
     # once implemented, change factorial (above) to call factorial_iterative

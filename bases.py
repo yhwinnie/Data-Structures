@@ -39,11 +39,9 @@ def encode(num, base):
 
     assert 2 <= base <= 36
     encoded_str = ''
-
     while num > 0:
         remainder = num % base
         divide = num / base
-
         num = divide
         if base > 10:
             if remainder in hex_digit:
@@ -52,10 +50,7 @@ def encode(num, base):
                 encoded_str = str(remainder) + encoded_str
         else:
             encoded_str = str(remainder) + encoded_str
-
     return encoded_str
-
-
 
 
 def convert(str_num, base1, base2):
@@ -65,6 +60,11 @@ def convert(str_num, base1, base2):
     assert 2 <= base1 <= 36
     assert 2 <= base2 <= 36
     # TODO: Convert number
+    converted_num = decode(str_num, base1)
+    converted_num = encode(converted_num, base2)
+
+    return converted_num
+
 
 
 def main():

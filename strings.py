@@ -2,6 +2,61 @@
 
 import string
 
+def search_string(word, string):
+    assert isinstance(word, str)
+    assert isinstance(string, str)
+    # return does_contain_iterative(word, string)
+    return does_contain_recursive(word, string)
+
+def does_contain_iterative(word, string):
+    if word == '':
+        return True
+    len_word = len(word)
+    for i in range(len(string)):
+        if string[i: len_word] == word:
+            return True
+        len_word += 1
+    return False
+
+def does_contain_recursive(word, string, len_word=0, index=0):
+    if word == '':
+        return True
+    if string[index: len_word] == word:
+        return True
+    if index > len(string):
+        return False
+    if len_word == 0:
+        len_word = len(word)
+        return does_contain_recursive(word, string, len_word, index=0)
+    else:
+        return does_contain_recursive(word, string, len_word + 1, index + 1)
+
+def is_anagram(str1, str2):
+    """A string of characters is a anagram if it reads the same forwards and
+    backwards, ignoring punctuation, whitespace, and letter casing"""
+    assert isinstance(str1, str)
+    assert isinstance(str2, str)
+    # return is_anagram_iterative(text)
+    str1 = ''.join(sorted(str1.lower()))
+    str2 = ''.join(sorted(str2.lower()))
+
+    if str1 == str2:
+        return True
+    else:
+        return False
+    #return is_anagram_recursive(str1, str2)
+
+# def is_anagram_recursive(str1, str2):
+#     str1 = ''.join(sorted(str1.lower()))
+#     str2 = ''.join(sorted(str2.lower()))
+#
+#     if str1 == str2:
+#         return True
+#     else:
+#         return False
+
+# def is_anagram_iterative(text):
+
 
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
@@ -30,13 +85,13 @@ def is_palindrome_iterative(text):
     mid = (end + start) / 2
 
     while end >= mid or start <= mid:
-        if not text[start].isalpha():
-            start += 1
-        if not text[end].isalpha():
-            end -= 1
-        else:
-            if text[start] != text[end]:
-                return False
+        # if not text[start].isalpha():
+        #     start += 1
+        # if not text[end].isalpha():
+        #     end -= 1
+        # else:
+        if text[start] != text[end]:
+            return False
         start += 1
         end -= 1
     return True

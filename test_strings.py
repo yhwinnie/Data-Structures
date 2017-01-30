@@ -1,10 +1,27 @@
 #!python
 
-from strings import is_palindrome
+from strings import is_palindrome, is_anagram, search_string
 import unittest
 
 
 class StringsTest(unittest.TestCase):
+    def test_search_string(self):
+        assert search_string('', '') is True
+        assert search_string('Winnie', 'Winnie Wen') is True
+        assert search_string('son', 'Jason') is True
+        assert search_string('some', 'Race car is awesome') is True
+        assert search_string('oops', 'oops I forgot to eat') is True
+        assert search_string('ome', 'oop') is False
+        assert search_string('tree', '!!!!!!tree is always right') is True
+
+
+    def test_is_anagram(self):
+        # simple anagrams
+        assert is_anagram('', '') is True  # base case
+        assert is_anagram('A', 'A') is True # base case
+        assert is_anagram('Listen', 'Silent') is True
+        assert is_anagram('Race car', 'Car race') is True
+        assert is_anagram('heros', 'horse') is True
 
     def test_is_palindrome_with_mirrored_strings(self):
         # simple palindromes that are mirrored strings

@@ -5,6 +5,8 @@ import unittest
 
 
 class TestSearch(unittest.TestCase):
+
+
     def test_linear_search_with_items_in_list(self):
         # linear search can find items regardless of list order
         names = ['Winnie', 'Kojin', 'Brian', 'Nabil', 'Julia', 'Alex', 'Nick']

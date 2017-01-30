@@ -10,10 +10,10 @@ class StringsTest(unittest.TestCase):
         assert search_string('Winnie', 'Winnie Wen') is True
         assert search_string('son', 'Jason') is True
         assert search_string('some', 'Race car is awesome') is True
-        assert search_string('oops', 'oops I forgot to eat') is True
+        assert search_string('oops', 'Oops I forgot to eat') is True
         assert search_string('ome', 'oop') is False
         assert search_string('tree', '!!!!!!tree is always right') is True
-
+        assert search_string('aaaab', 'aaaaaaaaaaab') is True
 
     def test_is_anagram(self):
         # simple anagrams

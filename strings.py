@@ -5,10 +5,12 @@ import string
 def search_string(word, string):
     assert isinstance(word, str)
     assert isinstance(string, str)
-    # return does_contain_iterative(word, string)
-    return does_contain_recursive(word, string)
+    return does_contain_iterative(word, string)
+    # return does_contain_recursive(word, string)
 
 def does_contain_iterative(word, string):
+    word = word.lower()
+    string = string.lower()
     if word == '':
         return True
     len_word = len(word)
@@ -32,8 +34,6 @@ def does_contain_recursive(word, string, len_word=0, index=0):
         return does_contain_recursive(word, string, len_word + 1, index + 1)
 
 def is_anagram(str1, str2):
-    """A string of characters is a anagram if it reads the same forwards and
-    backwards, ignoring punctuation, whitespace, and letter casing"""
     assert isinstance(str1, str)
     assert isinstance(str2, str)
     # return is_anagram_iterative(text)
@@ -69,7 +69,8 @@ def is_palindrome(text):
 
 
 def is_palindrome_iterative(text):
-    # implement the is_palindrome function iteratively here
+    # O(n)
+    # Implement the is_palindrome function iteratively here
 
     if text == '':
         return True
@@ -85,11 +86,6 @@ def is_palindrome_iterative(text):
     mid = (end + start) / 2
 
     while end >= mid or start <= mid:
-        # if not text[start].isalpha():
-        #     start += 1
-        # if not text[end].isalpha():
-        #     end -= 1
-        # else:
         if text[start] != text[end]:
             return False
         start += 1
@@ -117,6 +113,7 @@ def is_palindrome_recursive(text, left=None, right=None, mid=None):
         return is_palindrome_recursive(text, left + 1, right - 1)
     else:
         return False
+
 
 def main():
     import sys

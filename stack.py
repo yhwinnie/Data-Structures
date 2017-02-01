@@ -8,6 +8,7 @@ class Stack(object):
         # initialize instance variables
         # self.stack = LinkedList()
         self.stack = []
+
         if iterable:
             for item in iterable:
                 self.push(item)
@@ -18,7 +19,7 @@ class Stack(object):
 
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise"""
-        # O(1) for linkedlist and array 
+        # O(1) for linkedlist and array
         # LinkedList
         # if self.stack.count == 0:
         #     return True
@@ -38,6 +39,8 @@ class Stack(object):
         #Array
         return len(self.stack)
 
+
+
     def peek(self):
         """Return the top item on this stack without removing it,
         or None if this stack is empty"""
@@ -55,6 +58,8 @@ class Stack(object):
         """Push the given item onto this stack"""
         # O(1) for dynamic array & linkedlist
         self.stack.append(item)
+
+
 
     def pop(self):
         """Return the top item and remove it from this stack,

@@ -1,6 +1,7 @@
 #!python
 from linkedlist import LinkedList
 
+
 class Queue(object):
 
     def __init__(self, iterable=None):
@@ -8,6 +9,7 @@ class Queue(object):
         # initialize instance variables
         # self.queue = LinkedList()
         self.queue = []
+
         if iterable:
             for item in iterable:
                 self.enqueue(item)
@@ -50,8 +52,8 @@ class Queue(object):
 
 
     def dequeue(self):
-        # O(1) for array
-        # O(n) for linkedlist
+        # O(n) for array
+        # O(1) for linkedlist
         """Return the next item and remove it from this queue,
         or raise ValueError if this queue is empty"""
         if self.is_empty():

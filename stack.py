@@ -67,5 +67,4 @@ class Stack(object):
         if self.is_empty():
             raise ValueError
         else:
-            top_item = self.stack[self.length() - 1]
             return self.stack.pop()

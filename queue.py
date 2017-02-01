@@ -18,6 +18,7 @@ class Queue(object):
 
     def is_empty(self):
         """Return True if this queue is empty, or False otherwise"""
+        # O(1) for linkedlist and array
         # if self.queue.count == 0:
         #     return True
         # return False
@@ -27,11 +28,13 @@ class Queue(object):
         return False
 
     def length(self):
+        # O(1) for linkedlist and array
         """Return the number of items in this queue"""
         # return self.queue.count
         return len(self.queue)
 
     def peek(self):
+        # O(1) for linkedlist and array
         """Return the next item in this queue without removing it,
         or None if this queue is empty"""
         if self.is_empty():
@@ -40,12 +43,15 @@ class Queue(object):
         return self.queue[0]
 
     def enqueue(self, item):
+        # O(1) for linkedlist and array
         """Enqueue the given item into this queue"""
         # enqueue given item
         self.queue.append(item)
 
 
     def dequeue(self):
+        # O(1) for array
+        # O(n) for linkedlist
         """Return the next item and remove it from this queue,
         or raise ValueError if this queue is empty"""
         if self.is_empty():

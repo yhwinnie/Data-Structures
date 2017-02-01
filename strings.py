@@ -93,26 +93,39 @@ def is_palindrome_iterative(text):
     return True
 
 
-def is_palindrome_recursive(text, left=None, right=None, mid=None):
+def is_palindrome_recursive(text, left=None, right=None):
     # implement the is_palindrome function recursively here
+    # O(n)
+    # Omega(1)
     if text == '':
         return True
 
     # Strip punctuations
-    text = "".join(c for c in text if c not in ('!','.',':','-','?',' ', ','))
+    # text = "".join(c for c in text if c not in ('!','.',':','-','?',' ', ','))
 
     # Make everything lower case
     text = text.lower()
-    if left == None or right == None:
-        return is_palindrome_recursive(text, 0, len(text) - 1, 0)
 
-    mid = (right - left) / 2
-    if right < mid or left > mid:
+    if left == None or right == None:
+        return is_palindrome_recursive(text, 0, len(text) - 1)
+
+    if left >= right:
         return True
-    if text[left] == text[right]:
-        return is_palindrome_recursive(text, left + 1, right - 1)
-    else:
+
+    # Check letters
+    if not text[left].isalpha():
+        return is_palindrome_recursive(text, left + 1, right)
+
+    if not text[right].isalpha():
+        return is_palindrome_recursive(text, left, right - 1)
+
+    # mid = (right - left) / 2
+    # if right < mid or left > mid:
+    #     return True
+    if text[left] != text[right]:
         return False
+    else:
+        return is_palindrome_recursive(text, left + 1, right - 1)
 
 
 def main():

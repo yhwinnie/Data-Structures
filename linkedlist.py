@@ -18,6 +18,7 @@ class LinkedList(object):
         """Initialize this linked list and append the given items, if any"""
         self.head = None
         self.tail = None
+        self.count = 0
         if iterable:
             for item in iterable:
                 self.append(item)
@@ -41,17 +42,19 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes"""
-        node_count = 0
-        current = self.head  # Start at the head node
-        while current is not None:
-            node_count += 1  # Count this node
-            current = current.next  # Skip to the next node
-        return node_count
+        # node_count = 0
+        # current = self.head  # Start at the head node
+        # while current is not None:
+        #     node_count += 1  # Count this node
+        #     current = current.next  # Skip to the next node
+        # return node_count
+        return self.count
 
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
         new_node = Node(item)
         # Check if list is empty
+        self.count += 1
         if self.head is None:
             self.head = new_node
         # Otherwise insert after tail node
@@ -70,6 +73,7 @@ class LinkedList(object):
         # Check if list was empty
         if self.tail is None:
             self.tail = new_node
+        self.count += 1
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError"""
@@ -94,6 +98,7 @@ class LinkedList(object):
                 if previous is not None:
                     previous.next = None
                 self.tail = previous
+            self.count -= 1
         else:
             raise ValueError('Item not found: {}'.format(item))
 

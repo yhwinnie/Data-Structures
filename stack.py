@@ -18,6 +18,7 @@ class Stack(object):
 
     def is_empty(self):
         """Return True if this stack is empty, or False otherwise"""
+        # O(1) for linkedlist and array 
         # LinkedList
         # if self.stack.count == 0:
         #     return True
@@ -30,6 +31,7 @@ class Stack(object):
 
     def length(self):
         """Return the number of items in this stack"""
+        # O(1) for linkedlist and array
         # LinkedList
         # return self.stack.count
 
@@ -41,6 +43,7 @@ class Stack(object):
         or None if this stack is empty"""
         if self.is_empty():
             return None
+        # O(1) for array and linkedlist
         # LinkedList
         # return self.stack.tail.data
 
@@ -50,11 +53,14 @@ class Stack(object):
 
     def push(self, item):
         """Push the given item onto this stack"""
+        # O(1) for dynamic array & linkedlist
         self.stack.append(item)
 
     def pop(self):
         """Return the top item and remove it from this stack,
         or raise ValueError if this stack is empty"""
+        # O(1) for dynamic array
+        # O(n) for linkedlist
         # Linked List
         # if self.is_empty():
         #     raise ValueError

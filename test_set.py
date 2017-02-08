@@ -56,7 +56,20 @@ class SetTest(unittest.TestCase):
 
         assert s.length() == 18
 
-    
+    # def test_intersection_update(self):
+    #     t = Set()
+    #     t.add('a')
+    #     t.add('b')
+    #     t.add('c')
+    #
+    #     s = Set()
+    #     s.add('a')
+    #     s.add('b')
+    #     s.add('d')
+    #     s.add('e')
+    #
+    #     assert s.intersection_update(t) == ['a', 'b']
+
 
 
 

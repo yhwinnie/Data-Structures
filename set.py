@@ -8,6 +8,7 @@ class Set(object):
         """Initialize this set with the given items, if any"""
         # initialize instance variables
         self.hash = HashTable()
+        self.count = 0
         if iterable:
             for item in iterable:
                 self.add(item)
@@ -19,15 +20,16 @@ class Set(object):
 
 
     def length(self):
-        return self.hash.length()
+        # O(1)
+        return self.count
 
 
     def add(self, item):
         # O(n)
         """add element item to set s"""
-        #key = self.hash._bucket_index(item)
         if not self.hash.contains(item):
             self.hash.set(item, None)
+            self.count += 1
 
     def remove(self, item):
         # O(n)
@@ -36,9 +38,8 @@ class Set(object):
             raise KeyError
         else:
             self.hash.delete(item)
+            self.count -= 1
             return item
-
-
 
     # def pop(self):
     #     """remove and return an arbitrary element from s; raises KeyError if empty"""
@@ -61,10 +62,14 @@ class Set(object):
     #     pass
     #
     # def intersection_update(self, t):
+    #     # O(n^2)
     #     """return set s keeping only elements also found in t"""
-    #     for element in t.hash.buckets:
-    #         if not self.hash.contains(element):
-    #             self.add(element)
+    #     for element in self.hash.buckets:
+    #         current = element.head
+    #         while current != None:
+    #             if not t.hash.contains(current.data):
+    #                 self.remove(current.data)
+    #                 current = current.next
     #     print(self.hash.values())
     #     return self.hash.values()
     #

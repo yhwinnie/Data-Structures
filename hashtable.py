@@ -45,6 +45,7 @@ class HashTable(object):
         return count
 
     def contains(self, key):
+        # O(1) if implemented automatic resizing
         """Return True if this hash table contains the given key, or False
         - Best case: omega(1): If the key exists and is at the beginning of
         linkedlist.
@@ -65,12 +66,22 @@ class HashTable(object):
         # O(n) where n is the size of prime_numbers list
         old_buckets = self.buckets
 
-        double_size = self.buckets * 2
+        double_size = self.buckets
         for prime_num in range(len(self.prime_numbers) - 1):
             if (double_size >= self.prime_numbers[prime_num] and double_size < self.prime_numbers[prime_num + 1]):
                 self.bucket_size = self.prime_numbers[prime_num + 1]
-                HashTable(self.bucket_size)
-                return
+                self.buckets = [LinkedList() for i in range(self.bucket_size)]
+
+                # need to go through the old bucket and add it to the new.
+                break
+
+        keys = self.keys()
+        for key in keys:
+            self.set(key, self.get(key))
+        return 
+
+
+
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError

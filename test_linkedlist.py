@@ -38,13 +38,11 @@ class LinkedListTest(unittest.TestCase):
         assert ll.length() == 2
         ll.append('C')
         assert ll.length() == 3
-<<<<<<< HEAD
         ll.delete('C')
         assert ll.length() == 2
         ll.prepend('D')
         assert ll.length() == 3
-=======
->>>>>>> 5206c9f1ced886d1e079b942506460774dd331e1
+
 
     def test_append(self):
         ll = LinkedList()

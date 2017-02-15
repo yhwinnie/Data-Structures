@@ -34,9 +34,13 @@ class Sort(object):
                     self.swap(index, index + 1, new_arr)
                 check_sorted = self.check_if_sorted(new_arr)
         self.arr = new_arr
+        return new_arr
 
     def insertion_sort(self):
         # O(n^2)
+        # Omega (n^2) when compared to front
+        # Omega (n) compared to back
+        # Omega(log n) compared with binary search
         for i in range(len(self.arr) - 1):
             if self.arr[i] > self.arr[i + 1]:
                 self.swap(i, i + 1, self.arr)
@@ -138,6 +142,47 @@ class Sort(object):
                     index += 1
 
 
+    def merge_sort(self, arr):
+        # Merge sort recursively calling merge sort
+        if arr == []:
+            return []
+
+        if len(arr) == 1:
+            return arr
+
+        divide = len(arr)/2
+        left_lst = self.merge_sort(arr[:divide])
+        right_lst = self.merge_sort(arr[divide:])
+        print("LEFT AND RIGHT")
+        print(left_lst)
+        print(right_lst)
+
+        return self.merge_sort_helper(left_lst, right_lst)
+
+
+    def merge_sort_helper(self, array_one, array_two):
+        sorted_lst = []
+        while len(array_one) != 0 and len(array_two) != 0:
+            if array_one[0] >= array_two[0]:
+                sorted_lst.append(array_two[0])
+                array_two.pop(0)
+            else:
+                sorted_lst.append(array_one[0])
+                array_one.pop(0)
+
+        while len(array_one) != 0:
+            sorted_lst.append(array_one[0])
+            array_one.pop(0)
+
+        while len(array_two) != 0:
+            sorted_lst.append(array_two[0])
+            array_two.pop(0)
+        print("SORTED LIST")
+        print(sorted_lst)
+        return sorted_lst
+
+
+    # Stretch Challenges
 
     def radix_sort(self):
         radix_arr = [0] * 10
@@ -165,11 +210,13 @@ class Sort(object):
 
         print(self.arr)
 
-    def cocktail_shaker(self, arr):
+    def cocktail_shaker(self):
         pass
 
-    def shell_sort(self, arr):
+    def shell_sort(self):
         pass
+
+
 
 
 if __name__ == '__main__':

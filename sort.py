@@ -1,9 +1,10 @@
 #!python
 
 from linkedlist import LinkedList, Node
+from binarysearchtree import BST, Node
+
 
 class Sort(object):
-
 
     def __init__(self, arr=None):
         """Initialize this node with the given data"""
@@ -95,6 +96,7 @@ class Sort(object):
             count_arr[self.arr[index]] = count_arr[self.arr[index]] - 1
         self.arr = sorted_arr
 
+
     def bucket_sort(self):
         max_val, min_val = self.get_range()
         bucket_arr = [LinkedList()] * (len(self.arr))
@@ -143,81 +145,125 @@ class Sort(object):
 
 
     def merge_sort(self, arr):
+        # O(nlogn)
         # Merge sort recursively calling merge sort
-        if arr == []:
-            return []
-
-        if len(arr) == 1:
+        if len(arr) <= 1:
             return arr
-
+        # O(log n)
         divide = len(arr)/2
         left_lst = self.merge_sort(arr[:divide])
         right_lst = self.merge_sort(arr[divide:])
-        print("LEFT AND RIGHT")
-        print(left_lst)
-        print(right_lst)
 
         return self.merge_sort_helper(left_lst, right_lst)
 
-
     def merge_sort_helper(self, array_one, array_two):
+        # O(n)
         sorted_lst = []
         while len(array_one) != 0 and len(array_two) != 0:
             if array_one[0] >= array_two[0]:
-                sorted_lst.append(array_two[0])
-                array_two.pop(0)
+                sorted_lst.append(array_two.pop(0))
             else:
-                sorted_lst.append(array_one[0])
-                array_one.pop(0)
+                sorted_lst.append(array_one.pop(0))
 
-        while len(array_one) != 0:
-            sorted_lst.append(array_one[0])
-            array_one.pop(0)
+        if array_one:
+            sorted_lst.extend(array_one)
 
-        while len(array_two) != 0:
-            sorted_lst.append(array_two[0])
-            array_two.pop(0)
-        print("SORTED LIST")
-        print(sorted_lst)
+        if array_two:
+            sorted_lst.extend(array_two)
+
         return sorted_lst
 
+    def quick_stable_sort(self, arr):
+        if len(arr) <= 2:
+            return arr
+        pivot = arr[len(arr) - 1]
+        pivot_index = len(arr) - 1
+        left_index = 0
+        right_index = len(arr) - 2
+        return self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
+
+    def quick_stable_sort_helper(self, pivot, pivot_index, left_index, right_index, arr):
+        print(arr)
+        print(right_index)
+        print(left_index)
+        pivot = arr[pivot_index]
+        print("PIVOT")
+        print(pivot)
+        if left_index == right_index:
+            if arr[right_index] > pivot:
+                print("HERE")
+                arr[right_index], arr[pivot] = arr[pivot], arr[right_index]
+                pivot_index = right_index
+                right_index = pivot_index - 1
+                self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
+                right_index = len(arr) - 1
+                left_index = pivot_index + 1
+                self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
+
+        elif arr[left_index] > pivot and arr[right_index] < pivot:
+            arr[left_index], arr[right_index] = arr[right_index], arr[left_index]
+            self.quick_stable_sort_helper(pivot, pivot_index, left_index + 1, right_index - 1)
+        elif arr[left_index] > pivot and arr[right_index] >= pivot:
+            right_index -= 1
+            self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
+        elif arr[left_index] < pivot and arr[right_index] <= pivot:
+            left_index += 1
+            self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
+        else:
+            right_index -= 1
+            left_index += 1
+            self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
+
+
+        return arr
+
+    def tree_sort(self, arr):
+        #O(nlogn)
+        b_search_tree = BST()
+        # Insert into Binary Search Tree
+        #O(n) to go through the array
+        for item in arr:
+            # O(log n) to put in the item
+            b_search_tree.insert(b_search_tree, item)
+
+        # After that, traverse the binary search tree in order and
+        # return the sorted lst.
+        # O(n) to traverse?
+        #print(b_search_tree.in_order_traversal(b_search_tree))
+        return b_search_tree.in_order_traversal(b_search_tree)
 
     # Stretch Challenges
-
     def radix_sort(self):
         radix_arr = [0] * 10
         for item in self.arr:
             index = item % 10
             radix_arr[index] += 1
 
-        print(radix_arr)
+        #print(radix_arr)
         for index in range(len(radix_arr) - 1):
             if index > 0:
                 radix_arr[index] = radix_arr[index] + radix_arr[index - 1]
-        print(radix_arr)
+        #print(radix_arr)
 
         sorted_arr = [0] * len(self.arr)
 
         index = len(self.arr) - 1
         while index >= 0:
             radix_index = self.arr[index] % 10
-            print(radix_index)
-            print(radix_arr[radix_index])
+            #print(radix_index)
+            #print(radix_arr[radix_index])
             sorted_arr[radix_arr[radix_index]] = self.arr[index]
             radix_arr[radix_index] -= 1
             index -= 1
         self.arr = sorted_arr
 
-        print(self.arr)
+        #print(self.arr)
 
     def cocktail_shaker(self):
         pass
 
     def shell_sort(self):
         pass
-
-
-
 
 if __name__ == '__main__':
     test_sort()

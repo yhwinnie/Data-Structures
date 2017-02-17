@@ -132,16 +132,41 @@ class SortTest(unittest.TestCase):
         assert s.arr == [0, 1]
 
     def test_merge_sort(self):
-        # s = Sort([1, 4, 2, 7, 8, 9, 10])
-        # assert s.merge_sort([1, 4, 2, 7, 8, 9, 10]) == [1, 2, 4, 7, 8, 9, 10]
+        s = Sort([1, 4, 2, 7, 8, 9, 10])
+        assert s.merge_sort([1, 4, 2, 7, 8, 9, 10]) == [1, 2, 4, 7, 8, 9, 10]
         s = Sort([44, 8, 7, 44, 5, 4, 44, -1])
         assert s.merge_sort([44, 8, 7, 44, 5, 4, 44, -1]) == [-1, 4, 5, 7, 8, 44, 44, 44]
-        # s = Sort([])
-        # s.merge_sort([])
-        # assert s.merge_sort([]) == []
-        # s = Sort([0, 1])
-        # s.merge_sort([0, 1])
-        # assert s.merge_sort([0, 1]) == [0, 1]
+        s = Sort([])
+        s.merge_sort([])
+        assert s.merge_sort([]) == []
+        s = Sort([0, 1])
+        s.merge_sort([0, 1])
+        assert s.merge_sort([0, 1]) == [0, 1]
+
+
+    def DISABLE_test_tree_sort(self):
+        s = Sort([1, 4, 2, 7, 8, 9, 10])
+        assert s.tree_sort([1, 4, 2, 7, 8, 9, 10]) == [1, 2, 4, 7, 8, 9, 10]
+        s = Sort([44, 8, 7, 44, 5, 4, 44, -1])
+        assert s.tree_sort([44, 8, 7, 44, 5, 4, 44, -1]) == [-1, 4, 5, 7, 8, 44, 44, 44]
+        s = Sort([])
+        s.tree_sort([])
+        assert s.tree_sort([]) == []
+        s = Sort([0, 1])
+        s.tree_sort([0, 1])
+        assert s.tree_sort([0, 1]) == [0, 1]
+
+    def test_stable_quick_sort(self):
+        s = Sort([1, 4, 2, 7, 8, 9, 10])
+        assert s.quick_stable_sort([1, 4, 2, 7, 8, 9, 10]) == [1, 2, 4, 7, 8, 9, 10]
+        s = Sort([44, 8, 7, 44, 5, 4, 44, -1])
+        assert s.quick_stable_sort([44, 8, 7, 44, 5, 4, 44, -1]) == [-1, 4, 5, 7, 8, 44, 44, 44]
+        s = Sort([])
+        s.quick_stable_sort([])
+        assert s.quick_stable_sort([]) == []
+        s = Sort([0, 1])
+        s.quick_stable_sort([0, 1])
+        assert s.quick_stable_sort([0, 1]) == [0, 1]
 
 
 

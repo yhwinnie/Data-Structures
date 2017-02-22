@@ -182,6 +182,22 @@ class Sort(object):
         right_index = len(arr) - 2
         return self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
 
+    # Choosing middle pivot is good for already sorted array
+    # Pivot choices:
+    # first/last
+    # middle
+    # median-of-3
+
+    # Works well for:
+    # - Many repeated elements
+    # O(1) memeory
+    # Typical case: O(nlogn) time
+    # Stable quick sort is stable when the identity is always sorted. It is not stable and it does
+    # have bad worst case
+
+    # Omega(n logn)
+    # O(n^2)
+
     def quick_stable_sort_helper(self, pivot, pivot_index, left_index, right_index, arr):
         print(arr)
         print(right_index)
@@ -213,7 +229,6 @@ class Sort(object):
             right_index -= 1
             left_index += 1
             self.quick_stable_sort_helper(pivot, pivot_index, left_index, right_index, arr)
-
 
         return arr
 

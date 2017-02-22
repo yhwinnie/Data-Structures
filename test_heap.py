@@ -4,7 +4,6 @@ from heap import MinHeap
 import random
 import unittest
 
-
 class TestMinHeap(unittest.TestCase):
     def test_size_of_empty_heap(self):
         heap = MinHeap()
@@ -115,6 +114,15 @@ class TestMinHeap(unittest.TestCase):
         assert heap._left_child_index(6) ==  13
         assert heap._right_child_index(6) == 14
 
+    def test_heap_sort(self):
+        heap = MinHeap()
+        items = [9, 25, 86, 3, 29, 5, 55]
+        for item in items:
+            heap.insert(item)
+        assert heap.size() == len(items)
+        #sorted_items = sorted(items)
+        print(heap.heap_sort())
+        assert heap.heap_sort() == [3, 5, 9, 25, 29, 55, 86]
 
 if __name__ == '__main__':
     unittest.main()

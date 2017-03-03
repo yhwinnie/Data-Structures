@@ -432,10 +432,10 @@
 - revisit [recursion] with [memoization]
 
 **Challenges:**
-- implement the following with plain recursion and with memoization:
+- implement the following with plain recursion and with memoization using [starter code](recursion.py) and [unit tests](test_recursion.py):
     - [factorial] function
     - [fibonacci] function
-    - [change-making problem]
+    - [change-making problem] – solve [HackerRank's coin change problem]
     - stretch: [permutation] function
     - stretch: [combination] function
 - annotate functions with complexity analysis
@@ -455,6 +455,7 @@
 [permutation]: https://en.wikipedia.org/wiki/Permutation
 [combination]: https://en.wikipedia.org/wiki/Combination
 [change-making problem]: https://en.wikipedia.org/wiki/Change-making_problem
+[HackerRank's coin change problem]: https://www.hackerrank.com/challenges/coin-change
 [decorator]: https://wiki.python.org/moin/PythonDecorators
 
 [wikibooks greedy]: https://en.wikibooks.org/wiki/Algorithms/Greedy_Algorithms
@@ -468,10 +469,10 @@
 - revisit [recursion] with [dynamic programming]
 
 **Challenges:**
-- implement the following with dynamic programming:
+- implement the following with dynamic programming using [starter code](recursion.py) and [unit tests](test_recursion.py):
     - [factorial] function
     - [fibonacci] function
-    - [change-making problem]
+    - [change-making problem] – solve [HackerRank's coin change problem]
     - stretch: [permutation] function
     - stretch: [combination] function
 - annotate functions with complexity analysis
